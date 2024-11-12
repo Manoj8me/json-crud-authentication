@@ -10,9 +10,11 @@ function EmpEdit() {
     phone: "",
   })
   const navigate = useNavigate();
+  const apiUrl = process.env.REACT_APP_API_URL;
   const { empid } = useParams();
   useEffect(() => {
-    axios.get(`http://localhost:3030/employees/${empid}`)
+    axios.get(`${apiUrl}/employees/${empid}`)
+      // axios.get(`http://localhost:3030/employees/${empid}`)
       .then(res => setDetails({
         id: res.data.id,
         name: res.data.name,
@@ -29,7 +31,8 @@ function EmpEdit() {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.put(`http://localhost:3030/employees/${empid}`, details)
+    axios.put(`${apiUrl}/employees/${empid}`, details)
+      // axios.put(`http://localhost:3030/employees/${empid}`, details)
       .then(res => {
         alert("data edited successfullly");
         navigate("/emp/emplisting")

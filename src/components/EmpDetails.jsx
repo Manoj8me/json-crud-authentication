@@ -5,8 +5,10 @@ import { Link, useParams } from 'react-router-dom'
 function EmpDetails() {
   const [empData, setEmpData] = useState({});
   const { empid } = useParams();
+  const apiUrl = process.env.REACT_APP_API_URL;
   useEffect(() => {
-    axios.get(`http://localhost:3030/employees/${empid}`)
+    axios.get(`${apiUrl}/employees/${empid}`)
+      // axios.get(`http://localhost:3030/employees/${empid}`)
       .then(res => {
         setEmpData(res.data);
       })

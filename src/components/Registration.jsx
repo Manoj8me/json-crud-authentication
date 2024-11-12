@@ -15,6 +15,7 @@ function Registration() {
         address: "",
     })
     const navigate = useNavigate();
+    const apiUrl = process.env.REACT_APP_API_URL;
     const handleSetDetails = (e) =>
         setDetails(prevstate => ({
             ...prevstate, [e.target.name]: e.target.value
@@ -55,7 +56,8 @@ function Registration() {
         e.preventDefault();
         // console.log(details)
         if (isValidate()) {
-            axios.post("http://localhost:3030/users", details)
+            axios.post(`${apiUrl}/users`, details)
+                // axios.post("http://localhost:3030/users", details)
                 .then(res => { toast.success("Registered successfully"); navigate("/") })
                 .catch(err => toast.success("failed" + err));
         }

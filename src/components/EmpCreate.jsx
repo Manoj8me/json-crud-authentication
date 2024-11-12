@@ -10,6 +10,7 @@ function EmpCreate() {
     phone: "",
   })
   const navigate = useNavigate();
+  const apiUrl = process.env.REACT_APP_API_URL;
   const handleSetDetails = (e) => {
     const { name, value } = e.target;
     setDetails(prevState => ({
@@ -20,7 +21,8 @@ function EmpCreate() {
     const { name, email, phone } = details;
     const detailsWithoutId = { name, email, phone };
     e.preventDefault();
-    axios.post("http://localhost:3030/employees", detailsWithoutId)
+    axios.post(`${apiUrl}/employees`, detailsWithoutId)
+      // axios.post("http://localhost:3030/employees", detailsWithoutId)
       .then(res => {
         alert("data posted successfullly");
         navigate("/emp/emplisting")

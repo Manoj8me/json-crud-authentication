@@ -9,6 +9,7 @@ function Login() {
         password: "",
     })
     const navigate = useNavigate();
+    const apiUrl = process.env.REACT_APP_API_URL;
     useEffect(() => {
         sessionStorage.clear()
     }, [])
@@ -20,7 +21,8 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validate()) {
-            axios.get(`http://localhost:3030/users/${details.id}`)
+            axios.get(`${apiUrl}/${details.id}`)
+                // axios.get(`http://localhost:3030/users/${details.id}`)
                 .then(res => {
                     if (res.data.password === details.password) {
                         toast.success("logged in successfully");

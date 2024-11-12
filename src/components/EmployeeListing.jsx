@@ -5,8 +5,10 @@ import { Link, useNavigate } from 'react-router-dom';
 function EmployeeListing() {
     const [data, setData] = useState(null);
     const navigate = useNavigate();
+    const apiUrl = process.env.REACT_APP_API_URL;
     useEffect(() => {
-        axios.get("http://localhost:3030/employees")
+        axios.get(`${apiUrl}/employees`)
+            // axios.get("http://localhost:3030/employees")
             .then(res => setData(res.data))
             .catch(err => "error at" + err)
     }, [])
@@ -14,7 +16,8 @@ function EmployeeListing() {
         navigate(`/emp/edit/${empid}`)
     }
     const handleRemove = (empid) => {
-        axios.delete(`http://localhost:3030/employees/${empid}`)
+        axios.delete(`${apiUrl}/employees/${empid}`)
+            // axios.delete(`http://localhost:3030/employees/${empid}`)
             .then(res => {
                 alert("removed successfully");
                 window.location.reload();

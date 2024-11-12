@@ -19,6 +19,16 @@
       "country": "india",
       "gender": "male",
       "address": "chennai,india"
+    },
+    {
+      "id": "abc123",
+      "password": "abc123",
+      "name": "abc",
+      "email": "abc@gmail.com",
+      "phone": "1234567890",
+      "country": "india",
+      "gender": "male",
+      "address": "abc street,india"
     }
   ],
   "employees": [
@@ -36,7 +46,7 @@
     },
     {
       "id": "47c1",
-      "name": "ravi123",
+      "name": "ravi12345",
       "email": "ravi@gmail.com",
       "phone": "7921023467"
     }
