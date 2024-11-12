@@ -10,6 +10,8 @@ function Login() {
     })
     const navigate = useNavigate();
     const apiUrl = process.env.REACT_APP_API_URL;
+    console.log('API URL:', apiUrl);
+
     useEffect(() => {
         sessionStorage.clear()
     }, [])
@@ -21,7 +23,7 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validate()) {
-            axios.get(`${apiUrl}/${details.id}`)
+            axios.get(`${apiUrl}/users${details.id}`)
                 // axios.get(`http://localhost:3030/users/${details.id}`)
                 .then(res => {
                     if (res.data.password === details.password) {
